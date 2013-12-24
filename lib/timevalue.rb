@@ -1,6 +1,6 @@
 class TimeValue
     
-    protected :n, :i, :pv, :pmt, :fv
+    attr_accessor :n, :i, :pv, :pmt, :fv
     
     def initialize(n, i, pv, pmt, fv)
         @n = n
@@ -33,5 +33,10 @@ class TimeValue
     def calcN()
         i = @i / 100.0
         @n = (Math.log((@pmt - (i * @fv))/(@pmt + (i * @pv)))/Math.log(1 + i))
+    end
+
+    def calcPMT()
+        i = @i / 100.0
+        @pmt = (-i*(@fv+(@pv*((1+i)**n))))/(((1+i)**n)-1)
     end
 end
