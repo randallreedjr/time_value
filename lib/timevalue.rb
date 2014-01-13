@@ -10,9 +10,13 @@ class TimeValue
         @fv = fv
     end
     
+    #Base formula, ordinary annuity: -PV = [FV/((1+i)^n)] + (PMT/i)*[1-(1/(1+i)^n)]
+    
     def calcPV()
         i = @i / 100.0
+        #Initial contribution
         pvf = @fv / ((1 + i) ** @n)
+        #Present value of annuity
         pva = (@pmt/i) * (1-(1/((1+i)**@n)))
         @pv = (pvf + pva) * (-1)
         #Round
