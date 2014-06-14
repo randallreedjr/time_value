@@ -16,6 +16,6 @@ describe 'timevalue' do
     time_value.pv = 0
     time_value.pmt = -100
     time_value.fv = 5000
-    expect(time_value.calcN).to eq(21)
+    expect(time_value.calc_n).to eq(21)
   end
 end

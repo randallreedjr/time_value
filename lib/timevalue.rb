@@ -10,7 +10,7 @@ class TimeValue
         @fv = fv.to_f
     end
     
-    def calcPV()
+    def calc_pv()
         i = @i / 100.0
         pvf = @fv / ((1 + i) ** @n)
         pva = (@pmt/i) * (1-(1/((1+i)**@n)))
@@ -19,7 +19,7 @@ class TimeValue
         @pv = (@pv*100).round / 100.0
     end
     
-    def calcFV()
+    def calc_fv()
         i = @i / 100.0
         #Growth of initial contribution
         fvp = @pv * ((1 + i) ** @n)
@@ -30,12 +30,12 @@ class TimeValue
         @fv = (@fv*100).round / 100.0
     end
     
-    def calcN()
+    def calc_n()
         i = @i / 100.0
         @n = (Math.log((@pmt - (i * @fv))/(@pmt + (i * @pv)))/Math.log(1 + i)).round(0)
     end
 
-    def calcPMT()
+    def calc_pmt()
         i = @i / 100.0
         @pmt = (-i*(@fv+(@pv*((1+i)**n))))/(((1+i)**n)-1)
     end
