@@ -9,4 +9,13 @@ describe 'timevalue' do
     expect(time_value.pmt).to eq(0)
     expect(time_value.fv).to eq(0)
   end
+
+  let(:time_value) { TimeValue.new() }
+  it 'should calculate number of periods correctly' do
+    time_value.i = 8
+    time_value.pv = 0
+    time_value.pmt = -100
+    time_value.fv = 5000
+    expect(time_value.calcN).to eq(21)
+  end
 end

@@ -4,7 +4,7 @@ class TimeValue
     
     def initialize(n = 0, i = 0, pv = 0.0, pmt = 0.0, fv = 0.0)
         @n = n
-        @i = i
+        @i = i.to_f
         @pv = pv.to_f
         @pmt = pmt.to_f
         @fv = fv.to_f
@@ -32,7 +32,7 @@ class TimeValue
     
     def calcN()
         i = @i / 100.0
-        @n = (Math.log((@pmt - (i * @fv))/(@pmt + (i * @pv)))/Math.log(1 + i))
+        @n = (Math.log((@pmt - (i * @fv))/(@pmt + (i * @pv)))/Math.log(1 + i)).round(0)
     end
 
     def calcPMT()
