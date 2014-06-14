@@ -2,12 +2,12 @@ class TimeValue
     
     attr_accessor :n, :i, :pv, :pmt, :fv
     
-    def initialize(n, i, pv, pmt, fv)
+    def initialize(n = 0, i = 0, pv = 0.0, pmt = 0.0, fv = 0.0)
         @n = n
         @i = i
-        @pv = pv
-        @pmt = pmt
-        @fv = fv
+        @pv = pv.to_f
+        @pmt = pmt.to_f
+        @fv = fv.to_f
     end
     
     def calcPV()
