@@ -41,5 +41,6 @@ class TimeValue
     def calc_pmt()
         i = @i / 100.0
         @pmt = (-i*(@fv+(@pv*((1+i)**n))))/(((1+i)**n)-1)
+        @pmt = (@pmt*100).round / 100.0
     end
 end
