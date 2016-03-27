@@ -1,3 +1,6 @@
+require 'byebug'
+require 'solver'
+
 class TimeValue
     
     attr_accessor :n, :i, :pv, :pmt, :fv
@@ -42,5 +45,10 @@ class TimeValue
         i = @i / 100.0
         @pmt = (-i*(@fv+(@pv*((1+i)**n))))/(((1+i)**n)-1)
         @pmt = (@pmt*100).round / 100.0
+    end
+
+    def calc_i(guess = 10.0)
+      solver = Solver.new(self, 10.00, 0.00, 10.00)
+      solver.solve!
     end
 end
