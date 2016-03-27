@@ -1,3 +1,4 @@
-require_relative '../lib/timevalue.rb'
+require_relative '../lib/time_value.rb'
+require_relative '../lib/solver.rb'
 require 'rspec'
 require_relative '../spec/spec_helper.rb'

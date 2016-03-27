@@ -43,4 +43,31 @@ describe 'timevalue' do
     time_value.pmt = -100
     expect(time_value.calc_fv).to eq(149_217.62)
   end
+
+  it 'should calculate interest correctly when higher than guess' do
+    time_value.pv = -100_000
+    time_value.pmt = -1000.0
+    time_value.n = 20
+    time_value.fv = 1_113_330
+    guess = 10.00
+    expect(time_value.calc_i(guess)).to eq(12.41)
+  end
+
+  it 'should calculate interest correctly when lower than guess' do
+    time_value.pv = -100_000
+    time_value.pmt = 0.00
+    time_value.n = 20
+    time_value.fv = 500_000
+    guess = 10.00
+    expect(time_value.calc_i(guess)).to eq(8.38)
+  end
+
+  it 'should return an error if inputs are incorrect' do
+    time_value.pv = 100_000
+    time_value.pmt = 0
+    time_value.n = 20
+    time_value.fv = 500_000
+    guess = 10.00
+    expect(time_value.calc_i(guess)).to eq(nil)
+  end
 end
