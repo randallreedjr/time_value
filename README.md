@@ -11,6 +11,11 @@
 
 ## Usage
 
+Install the gem:
+```
+gem install time_value
+```
+
 Initialize with values:
 ```
 time_value = TimeValue.new(n, i, pv, pmt, fv)
