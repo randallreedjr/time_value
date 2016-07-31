@@ -1,10 +1,9 @@
-require 'byebug'
 require 'solver'
 
 class TimeValue
-    
+
     attr_accessor :n, :i, :pv, :pmt, :fv
-    
+
     def initialize(n = 0, i = 0, pv = 0.0, pmt = 0.0, fv = 0.0)
         @n = n
         @i = i.to_f
@@ -12,7 +11,7 @@ class TimeValue
         @pmt = pmt.to_f
         @fv = fv.to_f
     end
-    
+
   #Base formula, ordinary annuity: -PV = [FV/((1+i)^n)] + (PMT/i)*[1-(1/(1+i)^n)]
     def calc_pv()
         i = @i / 100.0
@@ -24,7 +23,7 @@ class TimeValue
         #Round
         @pv = (@pv*100).round / 100.0
     end
-    
+
     def calc_fv()
         i = @i / 100.0
         #Growth of initial contribution
@@ -35,7 +34,7 @@ class TimeValue
         #Round
         @fv = (@fv*100).round / 100.0
     end
-    
+
     def calc_n()
         i = @i / 100.0
         @n = (Math.log((@pmt - (i * @fv))/(@pmt + (i * @pv)))/Math.log(1 + i)).round(0)

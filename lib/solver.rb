@@ -18,7 +18,7 @@ class Solver
       iteration_count += 1
       begin
         result = time_value.calc_fv
-      rescue FloatDomainError => error
+      rescue FloatDomainError
         return nil
       end
       adjust_bounds(result)
