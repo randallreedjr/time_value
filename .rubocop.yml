@@ -1,0 +1,12 @@
+AllCops:
+  Include:
+    - app/**/*
+    - spec/**/*
+  Exclude:
+    - spec/spec_helper.rb
+    - lib/time_value/version.rb
+  TargetRubyVersion: 2.3
+Documentation:
+  Enabled: false
+Rails:
+  Enabled: false

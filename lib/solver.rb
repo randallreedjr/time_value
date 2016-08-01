@@ -1,38 +1,40 @@
+# frozen_string_literal: true
 class Solver
   PRECISION = 3
-  INTERVAL = 10 ** (-1 * PRECISION)
+  INTERVAL = 10**(-1 * PRECISION)
   MAX_ITERATIONS = 20
   attr_reader :time_value, :goal
-  attr_accessor :lower_bound, :upper_bound, :upper_cap_met
+  attr_accessor :lower_bound, :upper_bound, :upper_cap_met, :iteration_count
 
-  def initialize(time_value:, lower_bound: 0.00, upper_bound: nil, guess: 0.00)
+  def initialize(time_value:, lower_bound: 0.00, upper_bound: nil, guess: 10.00)
     @upper_bound = upper_bound || guess
     @lower_bound = lower_bound
     @time_value = time_value.dup
     @time_value.i = guess
     @goal = time_value.fv
     @upper_cap_met = false
+    @iteration_count = 0
   end
 
   def solve!
-    iteration_count = 0
-    while (upper_bound - lower_bound).round(PRECISION) > INTERVAL &&
-      iteration_count < MAX_ITERATIONS
-      iteration_count += 1
-      begin
-        result = time_value.calc_fv
-      rescue FloatDomainError
-        return nil
-      end
+    while !within_range? && iteration_count < MAX_ITERATIONS
+      result = time_value.calc_fv
       adjust_bounds!(result: result)
       time_value.i = new_guess
+      self.iteration_count += 1
     end
     # TODO: This will not handle the case where the 20th iteration
     # finds the solution
-    rate if iteration_count < MAX_ITERATIONS
+    return rate if iteration_count < MAX_ITERATIONS
+  rescue FloatDomainError
+    return nil
   end
 
   private
+
+  def within_range?
+    (upper_bound - lower_bound).round(PRECISION) <= INTERVAL
+  end
 
   def adjust_bounds!(result:)
     if result > goal
