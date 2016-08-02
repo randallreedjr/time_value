@@ -15,10 +15,16 @@ Install the gem:
 ```
 gem install time_value
 ```
-
-Initialize with values:
+Initialize with a hash:
 ```
-time_value = TimeValue.new(n, i, pv, pmt, fv)
+details = {
+  n: 12,
+  pv: 0,
+  pmt: -100,
+  i: 0.05
+}
+
+time_value = TimeValue.new(details)
 ```
 
 Or set values after initialization:
