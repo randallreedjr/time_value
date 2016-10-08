@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/randallreedjr/time_value/tree/master.svg?style=shield)](https://circleci.com/gh/randallreedjr/time_value/tree/master)
 [![Gem Version](https://badge.fury.io/rb/time_value.svg)](https://badge.fury.io/rb/time_value)
 [![Code Climate](https://codeclimate.com/github/randallreedjr/time_value/badges/gpa.svg)](https://codeclimate.com/github/randallreedjr/time_value)
 
