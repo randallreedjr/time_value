@@ -1,3 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/time_value.svg)](https://badge.fury.io/rb/time_value)
+[![Code Climate](https://codeclimate.com/github/randallreedjr/time_value/badges/gpa.svg)](https://codeclimate.com/github/randallreedjr/time_value)
+
 # Time Value of Money calculator
 
 ## Performs financial calculations for:
