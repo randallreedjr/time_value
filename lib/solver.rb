@@ -25,7 +25,7 @@ class Solver
     end
     # TODO: This will not handle the case where the 20th iteration
     # finds the solution
-    return rate if iteration_count < MAX_ITERATIONS
+    return rounded_rate if iteration_count < MAX_ITERATIONS
   rescue FloatDomainError
     return nil
   end
@@ -53,6 +53,10 @@ class Solver
   end
 
   def rate
+    time_value.i
+  end
+
+  def rounded_rate
     time_value.i.round(2)
   end
 end
