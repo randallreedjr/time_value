@@ -4,7 +4,7 @@ require 'time_value/version'
 Gem::Specification.new do |s|
   s.name        = 'time_value'
   s.version     = TimeValue::VERSION
-  s.date        = '2016-03-27'
+  s.date        = TimeValue::DATE
   s.summary     = 'Time value of money financial calculations'
   s.description = 'Perform time value of money calculations using financial calculator variables n, i, PV, PMT, and FV'
   s.authors     = ['Randall Reed, Jr.']
